@@ -17,10 +17,11 @@ export default () => {
       // pegando o filme em destaque
       let originals = list.filter(i => i.slug === 'originals');
       let randomChosen = Math.floor(Math.random() * (originals[0].items.results.length - 1));
-      
-      // TODO continuar
-      // https://www.youtube.com/watch?v=tBweoUiMsDg
-      // 11:19:00
+      let chosen = originals[0].items.results[randomChosen];
+
+      // pegando dados especificos (genero, temporadas, notas, etc)
+      let chosenInfo = await Tmdb.getMovieInfo(chosen.id, 'tv');
+      setFeaturedData(chosenInfo);
     }
 
     loadAll();
@@ -28,6 +29,8 @@ export default () => {
 
   return (
     <div className="page">
+
+      
 
       {featuredData && 
         <FeaturedMovie item={featuredData} />
