@@ -2,13 +2,16 @@ import React from 'react';
 import './FeaturedMovie.css';
 
 export default ({ item }) => {
-
-    let firstDate = new Date(item.first_air_date);
+    // criando data para pegar apenas o ano
+    let firstDate = new Date(item.first_air_date); 
     let genres = [];
+    
+    // preenchendo lista de gêneros
     for (let i in item.genres) {
         genres.push(item.genres[i].name);
     }
 
+    // componente filme em destaque
     return (
         <section className="featured" style={{
             backgroundSize: 'cover',
