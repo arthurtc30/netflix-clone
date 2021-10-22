@@ -52,7 +52,7 @@ export default () => {
 
       <Header black={blackHeader} />
 
-      {featuredData && 
+      {featuredData &&
         <FeaturedMovie item={featuredData} />
       }
 
@@ -63,10 +63,16 @@ export default () => {
       </section>
 
       <footer>
-        Feito por <b>Arthur Teixeira</b><br/>
-        Direitos de imagem para Netflix<br/>
+        Feito por <b>Arthur Teixeira</b><br />
+        Direitos de imagem para Netflix<br />
         Dados pegos do site TheMovieDB
       </footer>
+
+      {movieList.length <= 0 &&
+        <div className="loading">
+          <img src="https://media.filmelier.com/noticias/br/2020/03/Netflix_LoadTime.gif" alt="loading" />
+        </div>
+      }
     </div>
   );
 }

@@ -11,6 +11,14 @@ export default ({ item }) => {
         genres.push(item.genres[i].name);
     }
 
+    // limitando descrição
+    let description = item.overview
+    if (description.length > 200) {
+        description = description.substring(0, 200) + "...";
+    } else if (description.length === 0) {
+        description = "Sem descrição disponível.";
+    }
+
     // componente filme em destaque
     return (
         <section className="featured" style={{
@@ -35,7 +43,7 @@ export default ({ item }) => {
                         </div>
                     </div>
                     <div className="featured--description">
-                        {item.overview}
+                        {description}
                     </div>
                     <div className="featured--buttons">
                         <a href={`/watch/${item.id}`} className="featured--watchbutton">
